@@ -33,6 +33,10 @@ h1,h2,h3,h4,h5,h6 {
     color: var(--primary-color);
 }
 
+.alt-title-color {
+    color: var(--secondary-color);
+}
+
 main>.container {
     padding: 60px 15px 0;
 }
@@ -71,4 +75,8 @@ pre[class*="language-"] {
     word-break: break-all;
     word-wrap: break-word;  
     font-size: 1.5rem;                      
+}
+
+.btn {
+    background-color: var(--secondary-color)!important;
 }

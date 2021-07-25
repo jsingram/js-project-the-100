@@ -33,7 +33,7 @@
     <!-- === Nav Section -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="/img/3.svg" class="d-inline-block align-text-top" alt="Jonathan Ingram Logo" width="30" height="30">APP NAME</a>
+            <a class="navbar-brand" href="#"><img src="/img/3.svg" class="d-inline-block align-text-top" alt="Jonathan Ingram Logo" width="30" height="30">The 100</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -62,9 +62,38 @@
     
     <!-- === Main Section -->
     <main class="flex-shrink-0">
-        <div class="container">
-            <div class="row">
-                
+        <div class="container mt-5">
+            <div class="row row-cols-1 row-cols-lg-2">
+                <div class="col col-lg-4 border-end border-2">
+                    <h1><span class="alt-title-color">The 100</span>: A Coding Project</h1>
+                    <h4 class="lead">Live life one loop at a time. A javascript coding exercise using loops. Wrie a program that displays the numbers from 0 to 100. Display the even numbers in <strong>BOLD</strong>.</h4>
+                    <h2 class="mt-5 border-bottom border-2">Instructions</h2>
+                    <p>Enter a starting value and an ending value. Press the button and the values will appear.</p>
+                </div>
+                <div class="col col-lg-8">
+                    <div>
+                        <h5>Enter Values</h5>
+                        <form class="row gy-2 gx-3" action="">
+                            <div class="col">
+                                <input type="number" aria-label="Starting Value" id="startValue" class="form-control" placeholder="Start Value" value="0">
+                            </div>
+                            <div class="col">
+                                <input type="number" aria-label="Ending Value" id="endValue" class="form-control" placeholder="End Value" value="100">
+                            </div>
+                            <div class="col-12 d-flex justify-content-end">
+                                <button id="btnSubmit" type="button" class="btn btn-dark btn-lg" onclick="displayValues()">Display The Values</button>
+                            </div>
+                        </form>
+                        <h2 class="mt-5 border-bottom border-2">Results</h2>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-sm">
+                                <tbody id="results">
+                                    <!-- Results Displayed Here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
