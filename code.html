@@ -71,18 +71,101 @@
                 <!-- Embedded Code From App -->
                 <div class="col-lg-8">
                     <pre class="line-numbers"><code class="language-javascript">
-                        // Call Hellow World
-                        function HelloWorld() {
-                            alert("Hellow World!");
-                        }
+                        // Retrieve values from form.
+function getValues() {
+    // Get values from form.
+    let startValue = document.getElementById("startValue").value;
+    let endValue = document.getElementById("endValue").value;
+    let errorStartGreaterThanEnd = '<tr class="table-danger"><td>Starting interger must be smaller than ending integer.</td></tr>';
+    let errorFieldBlank = '<tr class="table-danger"><td>Please enter a number in both fields.</td></tr>';
+    let errorNumOutOfBounds = '<tr class="table-danger"><td>Numbers are out of bounds. Please enter numbers from 0 to 100.</td></tr>';
+    
+    // Convert input to integers
+    startValue = parseInt(startValue);
+    endValue = parseInt(endValue);
+
+    // Validate input and make sure they are integers
+    if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
+        if(startValue > endValue) {
+            document.getElementById("resultsTable").innerHTML = errorStartGreaterThanEnd;
+        } else if (startValue < 0 || endValue > 100) {
+            document.getElementById("resultsTable").innerHTML = errorNumOutOfBounds;
+        } else {
+            // Call generateNumbers()
+            let numbers = generateNumbers(startValue, endValue);
+
+            // Call displayResults()
+            displayResults(numbers);
+        }
+        
+    } else {
+        document.getElementById("resultsTable").innerHTML = errorFieldBlank;
+    }
+}
+
+// Generate range of numbers based off of entered values.
+function generateNumbers(startValue, endValue) {
+    let numbers = [];
+
+    // get numbers from start to end
+    for (let index = startValue; index <= endValue; index++) {
+        numbers.push(index);
+    }
+
+    return numbers;
+}
+
+// Display numbers and make even ones bold.
+function displayResults(numbers) {
+    let templateRows = "";
+
+    for (let index = 0; index < numbers.length; index++) {
+        let number = numbers[index];
+        if(number%2 == 0) {
+            /* ===============================================================
+               Blender does not display template literals very well. See source
+               code for referece to this line of code. 
+               =============================================================== */
+            templateRows += `<tr><td><strong>${number}</strong></td></tr>`;
+        }else {
+            /* ===============================================================
+               Blender does not display template literals very well. See source
+               code for referece to this line of code. 
+               =============================================================== */
+            templateRows += `<tr><td>${number}</td></tr>`;
+        }
+    }
+
+    document.getElementById("resultsTable").innerHTML=templateRows;
+}
                     </code>
                     </pre>
                 </div>
                 <!-- Description Of Code -->
                 <div class="col-lg-4">
-                    <p>The code is structed in one function.</p>
-                    <h5>HellowWorld()</h5>
-                    <p>HellowWorld() is a fucntion that displays an alert with a message of "Hellow World!".</p>
+                    <p>The code is structured into three functions.</p>
+                    <ol>
+                        <li>getValues()</li>
+                        <li>generateNumbers()</li>
+                        <li>displayResults()</li>
+                    </ol>
+                    <h5>1. getValues()</h5>
+                    <p>This function gathers the start and end values entered into the form. We cannot assume the data entered is an integer so we use <strong>parseInt()</strong> to attempt to convert the input into integers.</p>
+                    <p>We then validate the input to ensure we have integers using <strong>Number.isInteger()</strong>. If validation is successful, we call our next function, <strong>generateNumbers()</strong>, and pass in the data from the form. Otherwise we display an error message. </p>
+                    <h5>2. generateNumbers(int var1, int var2)</h5>
+                    <p><strong>Parameters</strong></p>
+                    <ul>
+                        <li>Integer: startValue</li>
+                        <li>Integer: endValue</li>
+                    </ul>
+                    <p>Returns an array of integers between the <em>startValue</em> and the <em>endValue</em>.</p>
+                    <h5>3. displayResults(int[] numbers)</h5>
+                    <p><strong>Parameters</strong></p>
+                    <ul>
+                        <li>Array[int]: numbers</li>
+                    </ul>
+                    <p>Adds a row to our table for each number in the array and makes it bold if it is even.</p>
+                    <p>This function utilizes template literals to inject the variable into valid html.</p>
                 </div>
             </div>
         </div>
